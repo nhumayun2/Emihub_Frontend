@@ -1,26 +1,19 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* This imports all of Tailwind's CSS.
+  We've removed the old v3 directives:
+  - @tailwind base;
+  - @tailwind components;
+  - @tailwind utilities;
+  In v4, @import "tailwindcss" handles all of that.
+*/
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* We can add our own global base styles here if needed */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* This is an example of using Tailwind's CSS variables,
+    which are automatically available in v4.
+    We'll set a default background and text color.
+  */
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-900);
 }
