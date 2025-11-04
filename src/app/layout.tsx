@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// @ts-ignore: Allow side-effect CSS import without type declarations
 import "./globals.css";
-import Providers from "./providers"; // <-- 1. Import our new Providers
+import Providers from "./providers";
+import Navbar from "@/components/shared/Navbar"; // <-- 1. Import the Navbar
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,8 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* 2. Wrap the children with our Providers component */}
-        <Providers>{children}</Providers>
+        <Providers>
+          {/* 2. Add the Navbar here, above the page content */}
+          <Navbar />
+          <main>{children}</main>
+          {/* We will add a Footer component here later */}
+        </Providers>
       </body>
     </html>
   );
