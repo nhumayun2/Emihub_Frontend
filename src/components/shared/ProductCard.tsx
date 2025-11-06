@@ -5,18 +5,24 @@ import Link from "next/link";
 import Image from "next/image"; // Use Next.js Image for optimization
 import Rating from "../ui/Rating";
 import { FaShoppingCart } from "react-icons/fa";
+import { useCartStore } from "@/store/cartStore"; // <-- NEW: Import cart store
 
 interface ProductCardProps {
   product: IProduct;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  // Placeholder function for Add to Cart
+  const { addItem } = useCartStore(); // <-- NEW: Get addItem action
+
+  // Updated Add to Cart function
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault(); // Prevent Link from navigating
     e.stopPropagation(); // Stop event bubbling
+    
+    addItem(product, 1); // <-- NEW: Call the store action, add 1
+    
     console.log("Adding to cart:", product.name);
-    // We will add Zustand cart logic here later
+    // We can add a "toast" notification here later
   };
 
   return (
