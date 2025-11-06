@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-import Navbar from "@/components/shared/Navbar"; // <-- 1. Import the Navbar
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer"; // <-- 1. Import the Footer
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          {/* 2. Add the Navbar here, above the page content */}
-          <Navbar />
-          <main>{children}</main>
-          {/* We will add a Footer component here later */}
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            {/* 2. Add the Footer here, below the main content */}
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>
